@@ -1,4 +1,3 @@
-
 package com.velora.velorabackend.config;
 
 import org.springframework.context.annotation.Configuration;
@@ -13,12 +12,15 @@ public class SecurityConfig implements WebMvcConfigurer {
         registry.addMapping("/api/**")
             .allowedOrigins(
                 "http://localhost:5173",
-                "http://127.0.0.1:5173"
+                "http://127.0.0.1:5173",
+                "https://velora-drive-car-market-place.vercel.app/"
             )
             .allowedMethods(
-                "GET", "POST", "PUT", "DELETE", "OPTIONS"
+                "GET", "POST", "PUT", "PATCH",
+                "DELETE", "OPTIONS"
             )
             .allowedHeaders("*")
-            .allowCredentials(true);
+            .allowCredentials(true)
+            .maxAge(3600);
     }
 }
